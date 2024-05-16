@@ -16,7 +16,7 @@ void main() async {
   GoRouter.optionURLReflectsImperativeAPIs = true;
   usePathUrlStrategy();
   await initFirebase();
-  await dotenv.load(fileName: ".env");
+  await dotenv.load(fileName: "/assets/.env");
   await FlutterFlowTheme.initialize();
 
   runApp(const MyApp());
