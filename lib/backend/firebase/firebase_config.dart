@@ -7,7 +7,7 @@ Future initFirebase() async {
     await dotenv.load();
     
     await Firebase.initializeApp(
-        options: const FirebaseOptions(
+        options: FirebaseOptions(
             apiKey: dotenv.env['FIREBASE_API_KEY']!,
             authDomain: dotenv.env['FIREBASE_AUTH_DOMAIN']!,
             projectId: dotenv.env['FIREBASE_PROJECT_ID']!,
