@@ -31,6 +31,8 @@ jobs:
           echo "FIREBASE_MESSAGEING_SENDER_ID=${{ secrets.FIREBASE_MESSAGEING_SENDER_ID}}" >> .env
           echo "FIREBASE_APP_ID=${{ secrets.FIREBASE_APP_ID}}" >> .env
           echo "FIREBASE_MEASUREMENT_ID=${{ secrets.FIREBASE_MEASUREMENT_ID}}" >> .env
+          cat .env
+          cp .env /assets/.env
           
       - name: Build Flutter for web
         run: flutter build web
