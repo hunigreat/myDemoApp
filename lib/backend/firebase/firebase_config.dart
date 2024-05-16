@@ -4,6 +4,8 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 Future initFirebase() async {
   if (kIsWeb) {
+    await dotenv.load();
+    
     await Firebase.initializeApp(
         options: const FirebaseOptions(
             apiKey: dotenv.env['FIREBASE_API_KEY']!,
