@@ -12,24 +12,20 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
         with:
-          node-version: '20'
+          flutter-version: 'stable'
 
-      - name: Install Firebase CLI
-        run: npm install -g firebase-tools
+      - name: Install Flutter dependencies
+        run: flutter pub get
 
-      - name: Build FlutterFlow project
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y lib32stdc++6
-          sudo apt-get install -y default-jdk
-          flutter config --enable-web
-          flutter pub get
-          flutter build web
+      - name: Build Flutter for web
+        run: flutter build web
 
       - name: Deploy to Firebase Hosting
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-        run: firebase deploy --only hosting
+        run: |
+          npm install -g firebase-tools
+          firebase deploy --only hosting
